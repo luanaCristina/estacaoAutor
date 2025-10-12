@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acorde Hub Café - Seu espaço de conexão, café e cultura">
+    <title>Acorde Hub Café - Onde o café encontra a cultura</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --cor-primaria: #8B4513;
+            --cor-secundaria: #F5DEB3;
+            --cor-texto: #333333;
+            --cor-fundo: #FDFBF5;
+            --fonte-titulo: 'Montserrat', sans-serif;
+            --fonte-corpo: 'Lato', sans-serif;
+        }
+        
+        /* ===== Reset e Configurações Globais ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--fonte-corpo);
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            line-height: 1.6;
+        }
+        
+        /* ===== Classes Reutilizáveis ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--cor-primaria);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: var(--fonte-titulo);
+        }
+        
+        .btn:hover {
+            background-color: #6d3510;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ===== Header (Cabeçalho Fixo) ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--cor-fundo);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+        }
+        
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        header nav a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        header nav a:hover {
+            color: var(--cor-primaria);
+        }
+        
+        /* ===== Hero Section ===== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content h3 {
+            font-family: var(--fonte-corpo);
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* ===== Pillars Grid Section ===== */
+        .pillars-grid {
+            padding: 80px 0;
+        }
+        
+        .pillars-grid h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .pillar-item {
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pillar-item i {
+            font-size: 3rem;
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
+        }
+        
+        .pillar-item h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+        }
+        
+        .pillar-item p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        /* ===== Partners Grid Section ===== */
+        .partners-grid {
+            padding: 80px 0;
+            background-color: var(--cor-secundaria);
+        }
+        
+        .partners-grid h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .partners-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .partner-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .partner-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .partner-content {
+            padding: 25px;
+        }
+        
+        .partner-content h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+        }
+        
+        .partner-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .partner-content a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .partner-content a:hover {
+            color: #6d3510;
+        }
+        
+        /* ===== Agenda Semana Section ===== */
+        .agenda-semana {
+            padding: 80px 0;
+            background-color: var(--cor-secundaria);
+        }
+        
+        .agenda-semana h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .agenda-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .agenda-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--cor-primaria);
+            transition: transform 0.3s ease;
+        }
+        
+        .agenda-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .agenda-item h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .agenda-item .dia {
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin-bottom: 5px;
+        }
+        
+        .agenda-item p {
+            line-height: 1.6;
+        }
+        
+        /* ===== Visite Grid Section ===== */
+        .visite-grid {
+            padding: 80px 0;
+        }
+        
+        .visite-grid h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .visite-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .visite-info h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .visite-info p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .visite-info i {
+            color: var(--cor-primaria);
+            margin-right: 10px;
+        }
+        
+        .visite-map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            background-color: var(--cor-texto);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        footer a {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        footer .social-icons {
+            margin-top: 20px;
+        }
+        
+        footer .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        footer .social-icons a:hover {
+            color: var(--cor-secundaria);
+        }
+        
+        /* ===== Media Queries (Responsividade) ===== */
+        @media (max-width: 768px) {
+            /* Header */
+            header nav {
+                display: none;
+            }
+            
+            header .logo {
+                font-size: 1.5rem;
+            }
+            
+            /* Hero */
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Títulos das seções */
+            .pillars-grid h2,
+            .partners-grid h2,
+            .agenda-semana h2,
+            .visite-grid h2 {
+                font-size: 2rem;
+            }
+            
+            /* Grids para uma coluna */
+            .pillars-container,
+            .partners-container,
+            .agenda-container,
+            .visite-container {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Ajustes de padding */
+            .pillars-grid,
+            .partners-grid,
+            .agenda-semana,
+            .visite-grid {
+                padding: 50px 0;
+            }
+            
+            .visite-map iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Acorde Hub Café</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#pilares">Pilares</a></li>
+                    <li><a href="#parceiros">Parceiros</a></li>
+                    <li><a href="#agenda">Agenda</a></li>
+                    <li><a href="#visite">Visite-nos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Acorde Hub Café</h1>
+            <h3>Onde o café encontra a cultura e a conexão</h3>
+            <a href="#visite" class="btn">Venha nos visitar</a>
+        </div>
+    </section>
+    
+    <!-- Pillars Grid Section -->
+    <section id="pilares" class="pillars-grid">
+        <div class="container">
+            <h2>Nossos Pilares</h2>
+            <div class="pillars-container">
+                <div class="pillar-item">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Café de Qualidade</h3>
+                    <p>Grãos selecionados de produtores locais, torrados artesanalmente para garantir o melhor sabor em cada xícara. Valorizamos a origem e a história por trás de cada café que servimos.</p>
+                </div>
+                <div class="pillar-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade</h3>
+                    <p>Um espaço acolhedor para encontros, networking e troca de ideias. Acreditamos que as melhores conexões acontecem em torno de uma boa xícara de café.</p>
+                </div>
+                <div class="pillar-item">
+                    <i class="fas fa-book"></i>
+                    <h3>Cultura</h3>
+                    <p>Eventos culturais, saraus literários e exposições de arte. Promovemos a arte e a literatura, transformando nosso espaço em um hub cultural vibrante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Partners Grid Section -->
+    <section id="parceiros" class="partners-grid">
+        <div class="container">
+            <h2>Nossos Parceiros</h2>
+            <div class="partners-container">
+                <div class="partner-card">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600" alt="Fazenda Vale Verde">
+                    <div class="partner-content">
+                        <h3>Fazenda Vale Verde</h3>
+                        <p>Produtores de cafés especiais da região de Minas Gerais, com práticas sustentáveis e café premiado internacionalmente.</p>
+                        <a href="#parceiros">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?w=600" alt="Padaria Artesanal Pão Quente">
+                    <div class="partner-content">
+                        <h3>Padaria Artesanal Pão Quente</h3>
+                        <p>Fornecedores de pães e doces frescos, feitos diariamente com ingredientes naturais e receitas tradicionais.</p>
+                        <a href="#parceiros">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600" alt="Galeria Arte & Vida">
+                    <div class="partner-content">
+                        <h3>Galeria Arte & Vida</h3>
+                        <p>Parceira em eventos culturais e exposições de artistas locais, promovendo a cena artística da nossa comunidade.</p>
+                        <a href="#parceiros">Saiba mais →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Agenda Semana Section -->
+    <section id="agenda" class="agenda-semana">
+        <div class="container">
+            <h2>Agenda da Semana</h2>
+            <div class="agenda-container">
+                <div class="agenda-item">
+                    <p class="dia">Segunda-feira</p>
+                    <h3>Café & Conversa</h3>
+                    <p>Das 18h às 20h - Encontro informal para networking e troca de experiências. Aberto para todos!</p>
+                </div>
+                <div class="agenda-item">
+                    <p class="dia">Quarta-feira</p>
+                    <h3>Sarau Literário</h3>
+                    <p>Das 19h às 21h - Leituras de poesias e contos, compartilhe suas obras ou apenas aprecie a arte da palavra.</p>
+                </div>
+                <div class="agenda-item">
+                    <p class="dia">Sexta-feira</p>
+                    <h3>Música Ao Vivo</h3>
+                    <p>Das 20h às 22h - Artistas locais apresentam MPB, bossa nova e jazz para embalar sua noite.</p>
+                </div>
+                <div class="agenda-item">
+                    <p class="dia">Sábado</p>
+                    <h3>Workshop de Barista</h3>
+                    <p>Das 10h às 12h - Aprenda técnicas de preparo, extração e latte art com nossos baristas profissionais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Visite Grid Section -->
+    <section id="visite" class="visite-grid">
+        <div class="container">
+            <h2>Visite-nos</h2>
+            <div class="visite-container">
+                <div class="visite-info">
+                    <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+                    <p>Rua dos Cafezais, 123<br>Centro - São Paulo/SP<br>CEP: 01234-567</p>
+                    
+                    <h3><i class="fas fa-clock"></i> Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 7h às 22h<br>Sábados: 8h às 23h<br>Domingos: 9h às 20h</p>
+                    
+                    <h3><i class="fas fa-phone"></i> Contato</h3>
+                    <p>Telefone: (11) 98765-4321<br>Email: contato@acordehubcafe.com.br</p>
+                </div>
+                <div class="visite-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975643533555!2d-46.65372368502203!3d-23.56143098468079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sSão%20Paulo%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1639000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Acorde Hub Café. Todos os direitos reservados.</p>
+            <p>Desenvolvido com <i class="fas fa-heart" style="color: #8B4513;"></i> e muito café.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

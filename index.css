@@ -254,4 +254,77 @@ footer {
     .visite-grid { 
         grid-template-columns: 1fr; 
     }
+    /* --- ESTILOS DA PÁGINA LEGAL (legal.html) --- */
+
+.legal-header {
+    background-color: var(--cor-secundaria);
+    text-align: center;
+    padding: 120px 0 40px 0; /* Espaço extra no topo por causa do menu fixo */
+}
+
+.legal-header h1 {
+    margin-bottom: 10px;
+}
+
+.legal-document {
+    padding: 60px 20px;
+    max-width: 900px; /* Texto mais estreito para facilitar a leitura */
+    margin: 0 auto;
+}
+
+.doc-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    border-left: 5px solid var(--cor-primaria); /* Detalhe visual na marca */
+}
+
+.doc-box h2 {
+    font-size: 1.8rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.doc-box h3 {
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.doc-box p, .doc-box ul {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.doc-box ul {
+    padding-left: 20px;
+}
+
+.doc-box ul li {
+    margin-bottom: 8px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 40px 0;
+}
+
+/* Ajuste Responsivo para a página legal */
+@media (max-width: 768px) {
+    .doc-box {
+        padding: 20px;
+    }
+    .legal-header {
+        padding-top: 100px;
+    }
+}
 }
